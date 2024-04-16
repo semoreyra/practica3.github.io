@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRABAJO FINAL MOREYRA</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script type="javascripts" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+    <h1>TRABAJO FINAL </h1>
+    <form action="">
+        <Label>USUARIO: </Label>
+        <input class="cajasTexto" type="text" placeholder="Ingrese su Usuario" minlength="8" 
+        maxlength="8" required>
+        <LABel>CONTRASEÑA: </LABel>
+        <input class="cajasTexto" type="password" placeholder="Contraseña" minlength="8" required>
+        <button type='submit' id='validate'>Validar!</button>
+        <button disabled id="envio" onclick="location.href='juego.html'">A JUGAR</button>
+        <li class="ui-btn"><a class="nav-link" aria-current="page" href="TRABAJOFINALMOREYRA.html">LIMPIAR</a></li>
+      </form>
+      <script>
+          let boton1  = document.getElementById("envio")
+          let cajasTexto = document.querySelectorAll(".cajasTexto")
+      
+          cajasTexto[1].addEventListener("keyup", () => {
+            if(cajasTexto[0].value != "" && cajasTexto[1].value != "") {
+                document.getElementById("envio").disabled = false
+            } else {
+                document.getElementById("envio").disabled = true
+            }
+          })
+          
+          boton1.addEventListener("click", (event) => {
+                event.preventDefault()
+                
+          })
+          $(document).ready(function(){
+         $("a").click(function(evento){    
+            alert("Ha limpiado el formulario");
+            $('input[type="text"]').val('');
+            $('input[type="password"]').val('');
+             evento.preventDefault();
+                });
+           }); 
+
+           function iniciar(){
+            let cajasTexto = document.querySelectorAll(".cajasTexto")
+            cajasTexto[0].addEventListener("input", validacion, false);
+            cajasTexto[1].addEventListener("input", validacion, false);
+              validacion();
+             }
+              function validacion(){
+                //alert(cajasTexto[0].val);
+                //alert(cajasTexto[1].value);
+                cajasTexto[1].addEventListener("keyup", () => {
+            if(cajasTexto[0].value != "" && cajasTexto[1].value != "") {
+                cajasTexto[0].setCustomValidity("Usuario y contraseña validos");
+                    cajasTexto[0].style.background='#FFFFFF';
+
+            } else {
+                cajasTexto[0].setCustomValidity("Ingrese el usuario y contraseña");
+                    cajasTexto[0].style.background='#FFDDDD';
+            }
+          })  
+         }
+
+          
+         
+             window.addEventListener("load", iniciar, false);
+      </script>
+</body>
+</html>
